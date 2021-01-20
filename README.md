@@ -6,18 +6,29 @@ Zach Murray
 
 Summary:
 A program to test for primality of any number (n). 
+  
   TASK: Menu
+
 A precise series of mathematical steps must be shown.
+  
   TASK: Print and Comment each step.
+
 Must be able to run on multiple numbers.
+  
   TASK: Enter a number
+  
   TASK: Cycle numbers
+  
   TASK: View numbers
+
 Test largest number that can be calculated within 10 minutes.
+  
   TASK: Create timer
 
 TEST:
+  
   Is n even?
+  
   Is n a multiple of a smaller prime number?
       divide n by the prime number.
 
