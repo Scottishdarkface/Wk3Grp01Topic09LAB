@@ -8,8 +8,16 @@ Week 3 Lab: Prime Numbers
 Pseudocode: 
 Steps
     Greeting
+        *cout statements
     Selection Menu
-    
+        *switch case
+        1.Enter a number
+            isEven(choice)
+            isPrime(choice)
+        2.Cycle through numbers
+            cyclePrimes(void)
+        3.View found numbers
+            display pointer array of found primes
 */
 #include <iostream>
 #include <string>
@@ -21,6 +29,7 @@ using std::endl;
 
 int isEven(int i);
 bool isPrime(int i);
+int cyclePrimes(int i);
 
 int main(void)
 {
@@ -54,6 +63,11 @@ int isEven(int i)
 }
 
 bool isPrime(int i)
+{
+
+}
+
+int cyclePrimes(int i)
 {
 
 }
