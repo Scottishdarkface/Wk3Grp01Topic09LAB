@@ -34,8 +34,8 @@ int maxSize = 1000;//Limiter for prime checking to avoid crash
 vector<int> P;
 
 //Function Prototypes
-bool isPrime(int i);// check in number is a multiple of a lower prime
-void cyclePrimes(void);// check each real number for prime until user stops
+bool isPrime(int n);// check in number is a multiple of a lower prime
+int cyclePrimes(void);// check each real number for prime until user stops
 
 int main(void)
 {
@@ -57,13 +57,16 @@ int main(void)
         {
         case 1://Check a single number for prime
             int aNum = 0;
-            cout << "Please enter the number you would like to check: " << endl;
+            cout << "Please enter the number you would like to check(Warning-decimals will be truncated): " << endl;
             cin >> aNum;
-            if (isdigit(aNum) && (aNum % 2 != 0))//is it a whole number? Can it be divided evenly?
-                isPrime(aNum);//is it divisible by another prime?
+            if (isPrime(aNum))//is it divisible by another prime?
+            {
+                cout << aNum << "is a prime number!" << endl;
+            }
             else
-                cout << aNum << "is not a prime number";
-
+            {
+                cout << aNum << "is not a prime number" << endl;
+            }
             break;
         case 2://Check for primes up to maxSize
             cout << "Checking all real whole numbers for primes..." << endl;
@@ -74,7 +77,9 @@ int main(void)
         case 3://Display known primes
             cout << "Discovered Primes are:\n\n";
             for (auto i = P.begin(); i != P.end(); ++i)//Output Iterator of Vector containing known primes
+            {
                 cout << *i << "\n";
+            }
 
             break;
         case 4://Exit program
@@ -90,17 +95,34 @@ int main(void)
 	return 0;
 }
 
-bool isPrime(int i)
+bool isPrime(int n)
 {
+    P.push_back(2);//add 2 to vector so that we can test against /2 for subsequent numbers without rejecting it
 
+    for (auto i = P.begin(); i != P.end(); ++i)//Output Iterator of Vector containing known primes
+    {
+        //n / vector element
+    }
+    
+    if ()
+    {
+        return false;
+    }
+    else
+    {
+        return true;
+    }
 }
 
-void cyclePrimes(void)
+int cyclePrimes(void)
 {
     for (int i = 2; i < maxSize; i++)//2 is the first prime number, check each number up to maxSize
     {
-        if (isdigit(i) && (i % 2 != 0))//is it a whole number? Can it be divided evenly?
-            if (isPrime(i))//is it prime?
-                P.push_back(i);//add to vector
+        if (isPrime(i))//Is it prime?
+        {
+            P.push_back(i);//if true, add to vector
+            cout << i << "is prime!" << endl;
+        }
     }
+    return 0;
 }
