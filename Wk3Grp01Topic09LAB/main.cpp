@@ -23,6 +23,8 @@ vector<int> P;
 //Function Prototypes
 bool isPrime(int n);// check in number is a multiple of a lower prime
 int cyclePrimes(void);// check each real number for prime until user stops
+bool vectorCheck(int n);//Check if number is already in vector
+void singlePrime(int aNum);//Check if single number is prime
 
 int main(void)
 {
@@ -47,27 +49,10 @@ int main(void)
                 int aNum = 0;
                 cout << "Please enter the number you would like to check(Cycle primes up to number first): " << endl;
                 cin >> aNum;
-
-                for (auto i = P.begin(); i != P.end(); ++i)//Check if number is already saved in vector
-                {
-                    if (aNum == *i)//if found in prime list already
-                    {
-                        cout << aNum << " is a prime number!" << endl;
-                    }
-                    else if (isPrime(aNum) == true)//is it divisible by a discovered prime?
-                    {
-                        cout << aNum << " is a prime number!" << endl;
-                    }
-                    else if (isPrime(aNum) == false)//not prime, or list of discovered primes not large enough
-                    {
-                        cout << aNum << " is not a prime number" << endl;
-                    }
-                    else//catch if something goes wrong
-                    {
-                        cout << "Error" << endl;
-                    }
-                    break;
-                }
+                
+                singlePrime(aNum);//Check if single number is prime
+               
+                break;
             }
             case 2://Check for primes up to maxSize
             {
@@ -131,4 +116,36 @@ int cyclePrimes(void)
         }
     }
     return 0;
+}
+
+bool vectorCheck(int n)
+{
+    for (auto i = P.begin(); i != P.end(); ++i)//Check if number is already saved in vector
+    {
+        if (n == *i)
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
+void singlePrime(int aNum)
+{
+    if (vectorCheck(aNum))//if found in prime list already
+    {
+        cout << aNum << " is a prime number!" << endl;
+    }
+    else if (isPrime(aNum) == true)//is it divisible by a discovered prime?
+    {
+        cout << aNum << " is a prime number!" << endl;
+    }
+    else if (isPrime(aNum) == false)//not prime, or list of discovered primes not large enough
+    {
+        cout << aNum << " is not a prime number" << endl;
+    }
+    else//catch if something goes wrong
+    {
+        cout << "Error" << endl;
+    }
 }
