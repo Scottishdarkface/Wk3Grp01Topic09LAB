@@ -34,7 +34,6 @@ int maxSize = 1000;//Limiter for prime checking to avoid crash
 vector<int> P;
 
 //Function Prototypes
-bool isEven(int i);//check if number divides by 2
 bool isPrime(int i);// check in number is a multiple of a lower prime
 void cyclePrimes(void);// check each real number for prime until user stops
 
@@ -74,7 +73,7 @@ int main(void)
             break;
         case 3://Display known primes
             cout << "Discovered Primes are:\n\n";
-            for (auto i = P.begin(); i != P.end(); ++i)//Output Iterator of Vector
+            for (auto i = P.begin(); i != P.end(); ++i)//Output Iterator of Vector containing known primes
                 cout << *i << "\n";
 
             break;
@@ -98,10 +97,10 @@ bool isPrime(int i)
 
 void cyclePrimes(void)
 {
-    for (int i = 3; i < maxSize - 1; i++)//3 is the first prime number
+    for (int i = 2; i < maxSize; i++)//2 is the first prime number, check each number up to maxSize
     {
-        if (isdigit(n) && (n % 2 != 0))//is it a whole number? Can it be divided evenly?
-            if (isPrime(n))
-
+        if (isdigit(i) && (i % 2 != 0))//is it a whole number? Can it be divided evenly?
+            if (isPrime(i))//is it prime?
+                P.push_back(i);//add to vector
     }
 }
