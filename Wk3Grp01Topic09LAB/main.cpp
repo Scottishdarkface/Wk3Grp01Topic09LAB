@@ -5,19 +5,6 @@ Zach Murray
 CIS210
 Week 3 Lab: Prime Numbers
 20 Jan 2021
-Pseudocode: 
-Steps
-   Done-Greeting
-        *cout statements
-    Done-Selection Menu
-        *switch case
-        1.Enter a number
-            isEven(int i)
-            isPrime(int i)
-        2.Cycle through numbers
-            cyclePrimes(void)
-       Done-3.View found numbers
-            display pointer array of found primes
 */
 #include <iostream>
 #include <string>
@@ -60,15 +47,27 @@ int main(void)
                 int aNum = 0;
                 cout << "Please enter the number you would like to check(Cycle primes up to number first): " << endl;
                 cin >> aNum;
-                if (isPrime(aNum))//is it divisible by another prime?
+
+                for (auto i = P.begin(); i != P.end(); ++i)//Check if number is already saved in vector
                 {
-                    cout << aNum << " is a prime number!" << endl;
+                    if (aNum == *i)//if found in prime list already
+                    {
+                        cout << aNum << " is a prime number!" << endl;
+                    }
+                    else if (isPrime(aNum) == true)//is it divisible by a discovered prime?
+                    {
+                        cout << aNum << " is a prime number!" << endl;
+                    }
+                    else if (isPrime(aNum) == false)//not prime, or list of discovered primes not large enough
+                    {
+                        cout << aNum << " is not a prime number" << endl;
+                    }
+                    else//catch if something goes wrong
+                    {
+                        cout << "Error" << endl;
+                    }
+                    break;
                 }
-                else
-                {
-                    cout << aNum << " is not a prime number" << endl;
-                }
-                break;
             }
             case 2://Check for primes up to maxSize
             {
@@ -110,35 +109,25 @@ int main(void)
 }
 
 bool isPrime(int n)
-{
-   // int j = 1;//True or false variable
-    
+{   
     for (auto i = P.begin(); i != P.end(); ++i)//Output Iterator of Vector containing known primes
     {
         if (n % *i == 0)//if given number has a remainder
-        {
-           // j = 1;//Not prime
+        {       
             return false;
         }
-        //else
-        //{
-           // j = 0;//prime
-        //}
     }
-
     return true;
-    //bool answer = (j == 0) ? true : false;
-    //return answer;
 }
 
 int cyclePrimes(void)
 {
-    for (int i = 2; i < maxSize; i++)//2 is the first prime number, check each number up to maxSize
+    for (int x = 2; x < maxSize; x++)//2 is the first prime number, check each number up to maxSize
     {
-        if (isPrime(i))//Is it prime?
+        if (isPrime(x))//Is it prime?
         {
-            P.push_back(i);//if true, add to vector
-            cout << i << " ";
+            P.push_back(x);//if true, add to vector
+            cout << x << " ";
         }
     }
     return 0;
