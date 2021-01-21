@@ -7,16 +7,16 @@ Week 3 Lab: Prime Numbers
 20 Jan 2021
 Pseudocode: 
 Steps
-    Greeting
+   Done-Greeting
         *cout statements
-    Selection Menu
+    Done-Selection Menu
         *switch case
         1.Enter a number
             isEven(int i)
             isPrime(int i)
         2.Cycle through numbers
             cyclePrimes(void)
-        3.View found numbers
+       Done-3.View found numbers
             display pointer array of found primes
 */
 #include <iostream>
@@ -98,7 +98,7 @@ bool isPrime(int i)
 
 void cyclePrimes(void)
 {
-    for (int i = 0; i < maxSize - 1; i++)
+    for (int i = 3; i < maxSize - 1; i++)//3 is the first prime number
     {
         if (isdigit(n) && (n % 2 != 0))//is it a whole number? Can it be divided evenly?
             if (isPrime(n))
