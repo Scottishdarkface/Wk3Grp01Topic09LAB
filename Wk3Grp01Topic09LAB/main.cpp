@@ -58,7 +58,7 @@ int main(void)
             case 1://Check a single number for prime
             {
                 int aNum = 0;
-                cout << "Please enter the number you would like to check(Warning-decimals will be truncated): " << endl;
+                cout << "Please enter the number you would like to check(Cycle primes up to number first): " << endl;
                 cin >> aNum;
                 if (isPrime(aNum))//is it divisible by another prime?
                 {
@@ -72,7 +72,10 @@ int main(void)
             }
             case 2://Check for primes up to maxSize
             {
-                cout << "Checking all real whole numbers for primes..." << endl;
+                cout << "How many values would you like to check for primes? (Warning, excessively high values will cause an error):";
+                cin >> maxSize;
+                
+                cout << "Checking real whole numbers for primes..." << endl;
                 P.clear();//Clear existing list to avoid relisting discovered numbers.
                 cyclePrimes();//Checking for prime numbers
 
