@@ -39,12 +39,12 @@ int cyclePrimes(void);// check each real number for prime until user stops
 
 int main(void)
 {
-    int n;//variable to input array
-
-    int choice;//Menu response
+    P.push_back(2);//add 2 to vector so that we can test against /2 for subsequent numbers without rejecting it
+    int choice = 0;//Menu response
     do
     {
-        cout << "Welcome to the Prime Number Checker!"
+        cout << "****************************************"
+            "\n\nWelcome to the Prime Number Checker!"
             "\nBrought to you by Chris Pacheco, Nathalie Davis, and Zach Murray"
             "\n\nPlease make a selection to continue:"
             "\n\n1)Check if a single number is prime"
@@ -55,40 +55,48 @@ int main(void)
 
         switch (choice)//Choice decision branch
         {
-        case 1://Check a single number for prime
-            int aNum = 0;
-            cout << "Please enter the number you would like to check(Warning-decimals will be truncated): " << endl;
-            cin >> aNum;
-            if (isPrime(aNum))//is it divisible by another prime?
+            case 1://Check a single number for prime
             {
-                cout << aNum << "is a prime number!" << endl;
+                int aNum = 0;
+                cout << "Please enter the number you would like to check(Warning-decimals will be truncated): " << endl;
+                cin >> aNum;
+                if (isPrime(aNum))//is it divisible by another prime?
+                {
+                    cout << aNum << " is a prime number!" << endl;
+                }
+                else
+                {
+                    cout << aNum << " is not a prime number" << endl;
+                }
+                break;
             }
-            else
+            case 2://Check for primes up to maxSize
             {
-                cout << aNum << "is not a prime number" << endl;
-            }
-            break;
-        case 2://Check for primes up to maxSize
-            cout << "Checking all real whole numbers for primes..." << endl;
-            P.clear();//Clear existing list to avoid relisting discovered numbers.
-            cyclePrimes();//Checking for prime numbers
+                cout << "Checking all real whole numbers for primes..." << endl;
+                P.clear();//Clear existing list to avoid relisting discovered numbers.
+                cyclePrimes();//Checking for prime numbers
 
-            break;
-        case 3://Display known primes
-            cout << "Discovered Primes are:\n\n";
-            for (auto i = P.begin(); i != P.end(); ++i)//Output Iterator of Vector containing known primes
-            {
-                cout << *i << "\n";
+                break;
             }
+            case 3://Display known primes
+            {
+                cout << "Discovered Primes are:\n\n";
+                for (auto i = P.begin(); i != P.end(); ++i)//Output Iterator of Vector containing known primes
+                {
+                    cout << *i << "\n";
+                }
 
-            break;
-        case 4://Exit program
-            break;
-        default:
-            cout << "That is not a valid choice." << endl;
-            cout << "\nPress any key to continue...";
-            _getch();
-            break;
+                break;
+            }
+            case 4://Exit program
+                break;
+            default:
+            {
+                cout << "That is not a valid choice." << endl;
+                cout << "\nPress any key to continue...";
+                _getch();
+                break;
+            }
         }
     } while (choice != 4);//Exit if 4 is selected
 
@@ -97,17 +105,24 @@ int main(void)
 
 bool isPrime(int n)
 {
-    P.push_back(2);//add 2 to vector so that we can test against /2 for subsequent numbers without rejecting it
-
+   // int j = 1;//True or false variable
+    
     for (auto i = P.begin(); i != P.end(); ++i)//Output Iterator of Vector containing known primes
     {
-        if (n % *i != 0)//if given number has a remainder
+        if (n % *i == 0)//if given number has a remainder
         {
-            return true;
-        } 
+           // j = 1;//Not prime
+            return false;
+        }
+        //else
+        //{
+           // j = 0;//prime
+        //}
     }
 
-    return false;//If loop completes, it was not a prime.
+    return true;
+    //bool answer = (j == 0) ? true : false;
+    //return answer;
 }
 
 int cyclePrimes(void)
@@ -117,7 +132,7 @@ int cyclePrimes(void)
         if (isPrime(i))//Is it prime?
         {
             P.push_back(i);//if true, add to vector
-            cout << i << "is prime!" << endl;
+            cout << i << " is prime!" << endl;
         }
     }
     return 0;
