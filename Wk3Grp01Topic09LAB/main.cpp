@@ -43,8 +43,8 @@ int main(void)
     int choice = 0;//Menu response
     do
     {
-        cout << "****************************************"
-            "\n\nWelcome to the Prime Number Checker!"
+        cout << "\n\n\n****************************************"
+            "\nWelcome to the Prime Number Checker!"
             "\nBrought to you by Chris Pacheco, Nathalie Davis, and Zach Murray"
             "\n\nPlease make a selection to continue:"
             "\n\n1)Check if a single number is prime"
@@ -72,12 +72,14 @@ int main(void)
             }
             case 2://Check for primes up to maxSize
             {
-                cout << "How many values would you like to check for primes? (Warning, excessively high values will cause an error):";
+                cout << "How many values would you like to check for primes?:";
                 cin >> maxSize;
                 
                 cout << "Checking real whole numbers for primes..." << endl;
                 P.clear();//Clear existing list to avoid relisting discovered numbers.
                 cyclePrimes();//Checking for prime numbers
+
+                cout << "\n\n" << P.size() << " primes discovered.";
 
                 break;
             }
@@ -89,6 +91,7 @@ int main(void)
                     cout << *i << "\n";
                 }
 
+                cout << "\n\n" << P.size() << " primes discovered.";
                 break;
             }
             case 4://Exit program
@@ -135,7 +138,7 @@ int cyclePrimes(void)
         if (isPrime(i))//Is it prime?
         {
             P.push_back(i);//if true, add to vector
-            cout << i << " is prime!" << endl;
+            cout << i << " ";
         }
     }
     return 0;
