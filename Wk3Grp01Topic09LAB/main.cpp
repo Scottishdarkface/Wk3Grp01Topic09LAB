@@ -101,17 +101,13 @@ bool isPrime(int n)
 
     for (auto i = P.begin(); i != P.end(); ++i)//Output Iterator of Vector containing known primes
     {
-        //n / vector element
+        if (n % *i != 0)//if given number has a remainder
+        {
+            return true;
+        } 
     }
-    
-    if ()
-    {
-        return false;
-    }
-    else
-    {
-        return true;
-    }
+
+    return false;//If loop completes, it was not a prime.
 }
 
 int cyclePrimes(void)
